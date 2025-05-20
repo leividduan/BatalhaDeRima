@@ -30,12 +30,28 @@ public class BatalhaDeRima {
 
         try {
             // Start an agent inside the container (optional)
-            AgentController myAgent = mainContainer.createNewAgent(
+            AgentController juiz = mainContainer.createNewAgent(
                 "Juiz", // Agent name
                 "agents.Juiz", // Fully qualified class name
                 null // Arguments to the agent's setup method
             );
-            myAgent.start();
+            juiz.start();
+
+            // Start an agent inside the container (optional)
+            AgentController rapper1 = mainContainer.createNewAgent(
+                    "Rapper1", // Agent name
+                    "agents.Rapper", // Fully qualified class name
+                    null // Arguments to the agent's setup method
+            );
+            rapper1.start();
+
+            // Start an agent inside the container (optional)
+            AgentController rapper2 = mainContainer.createNewAgent(
+                    "Rapper2", // Agent name
+                    "agents.Rapper", // Fully qualified class name
+                    null // Arguments to the agent's setup method
+            );
+            rapper2.start();
         } catch (Exception e) {
             e.printStackTrace();
         }

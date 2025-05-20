@@ -5,8 +5,10 @@
 package agents;
 
 import jade.core.Agent;
-import jade.core.behaviours.CyclicBehaviour;
-import jade.lang.acl.ACLMessage;
+import jade.core.behaviours.OneShotBehaviour;
+import llm.LLMClient;
+import llm.Prompt;
+
 
 /**
  *
@@ -14,10 +16,13 @@ import jade.lang.acl.ACLMessage;
  */
 public class Juiz extends Agent{
     protected void setup (){
-        addBehaviour (new CyclicBehaviour(this){
+        addBehaviour (new OneShotBehaviour(this){
         public void action ( ){
-        
-        } // fim do a c t i on ( )
-        }); // fim do addBehaviour ( )
+            var prompt = Prompt.GetRhymePrompt("algodão doce", "");
+            LLMClient client = new LLMClient();
+            var result = client.invokeModel("gemma3:12b", prompt);
+            System.out.println(result);
+        }
+        });
     }
 }
