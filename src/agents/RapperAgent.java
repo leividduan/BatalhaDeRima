@@ -26,7 +26,6 @@ public class RapperAgent extends Agent {
                         String prompt = Prompt.GetRhymePrompt(topic, "");
                         LLMClient client = new LLMClient();
                         String rhyme = client.invokeModel("gemma3:12b", prompt);
-                        client.speakText(rhyme);
 
                         ACLMessage response = new ACLMessage(ACLMessage.INFORM);
                         response.addReceiver(new AID("judge", AID.ISLOCALNAME));
@@ -43,7 +42,6 @@ public class RapperAgent extends Agent {
                         String prompt = Prompt.GetRhymePrompt(topic, rhymeA);
                         LLMClient client = new LLMClient();
                         String rhyme = client.invokeModel("gemma3:12b", prompt);
-                        client.speakText(rhyme);
 
                         ACLMessage response = new ACLMessage(ACLMessage.INFORM);
                         response.addReceiver(new AID("judge", AID.ISLOCALNAME));

@@ -67,12 +67,12 @@ public class LLMClient {
                 .replace("\\\"", "\"");
     }
 
-    public void speakText(String text) {
+    public void speakText(String text, String voice) {
         String escapedText = text.replace("\"", "\\\"")
                 .replace("\n", "\\n")
                 .replace("\r", "\\r");
 
-        String requestBody = String.format("{\"text\": \"%s\"}", escapedText);
+        String requestBody = String.format("{ \"voice\": \"%s\", \"text\": \"Leia este texto com a cadência, o ritmo e a entrega vocal de um rap à capela. Enfatize a batida e as rimas. Leia com muita raiva do seu oponente como se ele tivesse acabado de xingar a sua mãe: %s\"}", voice, escapedText);
 
         RequestBody body = RequestBody.create(requestBody, JSON);
         Request request = new Request.Builder()

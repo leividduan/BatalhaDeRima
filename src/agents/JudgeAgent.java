@@ -85,13 +85,15 @@ public class JudgeAgent extends Agent {
     }
 
     private void evaluateRound(String a, String b, String topic) {
+        LLMClient client = new LLMClient();
         gui.updateRhymeA(a);
+        client.speakText(a, "Charon");
         gui.updateRhymeB(b);
+        client.speakText(b, "Orus");
         String winner;
 
         String promptA = Prompt.EvaluateSingleRhyme(topic, a);
         String promptB = Prompt.EvaluateSingleRhyme(topic, b);
-        LLMClient client = new LLMClient();
         String responseA = client.invokeModel("gemma3:12b", promptA);
         String responseB = client.invokeModel("gemma3:12b", promptB);
 
